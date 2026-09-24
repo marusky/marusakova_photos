@@ -102,21 +102,27 @@ export function initMarquee() {
     track.append(group.cloneNode(true));
     if (reduced) continue;
 
+    // Width is cached: reading offsetWidth every frame would force a layout per frame.
+    let width = group.offsetWidth;
+    new ResizeObserver(() => (width = group.offsetWidth)).observe(group);
+    // IntersectionObserver instead of ScrollTrigger: this runs before the pinned
+    // sections exist, so ScrollTrigger positions would be off by the pin spacing.
+    let visible = false;
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(marquee);
+
     let x = 0;
     let dir = -1;
     let boost = 0;
     lenis?.on("scroll", ({ velocity, direction }) => {
-      boost = Math.min(Math.abs(velocity) * 0.6, 30);
+      boost = Math.min(Math.abs(velocity) * 0.5, 25);
       if (direction) dir = direction === 1 ? -1 : 1;
     });
-    let visible = false;
-    ScrollTrigger.create({ trigger: marquee, start: "top bottom", end: "bottom top", onToggle: (s) => (visible = s.isActive) });
+    const setX = gsap.quickSetter(track, "x", "px");
     gsap.ticker.add((_, delta) => {
-      if (!visible) return;
-      const width = group.offsetWidth;
-      boost *= 0.92;
-      x = gsap.utils.wrap(-width, 0, x + dir * (0.9 + boost) * (delta / 16.7));
-      gsap.set(track, { x });
+      if (!visible || !width) return;
+      boost *= 0.93;
+      x = gsap.utils.wrap(-width, 0, x + dir * (1 + boost) * (delta / 16.7));
+      setX(x);
     });
   }
 }

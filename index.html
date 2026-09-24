@@ -8,12 +8,9 @@
   <body data-page="home">
     <!-- @include header -->
 
-    <div class="preloader fixed inset-0 z-[85] hidden flex-col justify-between bg-paper px-5 py-5 text-ink md:px-10 md:py-7" aria-hidden="true">
-      <p class="font-serif text-[1.65rem] leading-none">Marušáková <span class="italic">photos</span></p>
-      <div class="flex items-end justify-between">
-        <p class="eyebrow max-w-40 text-ink-muted">Vaše príbehy mojimi očami</p>
-        <p class="display text-[28vw] leading-[0.75] md:text-[16vw]"><span class="preloader-count">0</span></p>
-      </div>
+    <div class="preloader fixed inset-0 z-[85] hidden flex-col items-center justify-center bg-paper text-ink" aria-hidden="true">
+      <p class="preloader-mark font-serif text-4xl leading-none md:text-5xl">Marušáková <span class="italic">photos</span></p>
+      <div class="mt-6 h-px w-40 overflow-hidden bg-ink/15 md:w-56"><div class="preloader-bar h-full origin-left scale-x-0 bg-ink"></div></div>
     </div>
 
     <main id="obsah">
@@ -22,7 +19,6 @@
         <div class="absolute inset-x-0 bottom-0 z-0 px-2 pb-[4vh] md:pb-3">
           <div class="mb-3 flex justify-between px-3 md:mb-1 md:px-8">
             <p class="eyebrow" data-fade>Svadby · Rodiny · Portréty</p>
-            <p class="eyebrow hidden sm:block" data-fade>Slovensko — celý svet</p>
           </div>
           <h1 class="hero-title display whitespace-nowrap text-center text-[24.6vw] leading-[0.76] tracking-[-0.045em]" aria-label="Marušáková photos">Marušáková</h1>
         </div>
@@ -34,13 +30,15 @@
           Scrollujte <span class="relative block h-12 w-px overflow-hidden bg-ink/15"><span class="scroll-line absolute inset-x-0 top-0 h-1/2 bg-ink"></span></span>
         </a>
 
-        <div class="hero-media absolute inset-0 z-10" style="clip-path: inset(22% 38% 30% 38%)">
-          <x-photo src="vyber/4" sizes="100vw" eager class="hero-slide absolute inset-0 h-full" alt="Pár pri západe slnka"></x-photo>
-          <x-photo src="svadby/7" sizes="100vw" class="hero-slide absolute inset-0 h-full" alt="Novomanželia v horách"></x-photo>
-          <x-photo src="vyber/13" sizes="100vw" class="hero-slide absolute inset-0 h-full" alt="Dievčatá v objatí v zlatom svetle"></x-photo>
-          <x-photo src="portrety/4" sizes="100vw" class="hero-slide absolute inset-0 h-full" alt="Portrét ženy v kožuchu"></x-photo>
-          <x-photo src="vyber/6" sizes="100vw" class="hero-slide absolute inset-0 h-full" alt="Pár v poli pri západe slnka"></x-photo>
-          <div class="hero-overlay absolute inset-0 flex flex-col items-center justify-center bg-black/25 px-5 text-center text-paper opacity-0">
+        <div class="hero-media absolute inset-0 z-10" style="clip-path: inset(20% 38% 30% 38%)">
+          <div class="hero-stage absolute left-0 top-0 aspect-[2/3] w-full origin-top-left">
+            <x-photo src="vyber/1" sizes="(min-width:768px) 100vw, 150vw" eager class="hero-slide absolute inset-0 h-full" alt="Pár v objatí"></x-photo>
+            <x-photo src="vyber/13" sizes="(min-width:768px) 100vw, 150vw" class="hero-slide absolute inset-0 h-full" alt="Dievčatá v objatí v zlatom svetle"></x-photo>
+            <x-photo src="rodiny/1" sizes="(min-width:768px) 100vw, 150vw" class="hero-slide absolute inset-0 h-full" alt="Rodina na deke pod stromom"></x-photo>
+            <x-photo src="vyber/7" sizes="(min-width:768px) 100vw, 150vw" class="hero-slide absolute inset-0 h-full" alt="Pár v poli pri západe slnka"></x-photo>
+            <x-photo src="vyber/15" sizes="(min-width:768px) 100vw, 150vw" class="hero-slide absolute inset-0 h-full" alt="Portrét ženy v tráve"></x-photo>
+          </div>
+          <div class="hero-overlay absolute inset-0 z-[5] flex flex-col items-center justify-center bg-black/25 px-5 text-center text-paper opacity-0">
             <p class="eyebrow mb-6">Marušáková photos</p>
             <p class="display text-[13vw] md:text-[7.5vw]">Vaše príbehy<br /><em>mojimi očami</em></p>
           </div>
@@ -72,39 +70,39 @@
 
       <!-- PORTFOLIO (horizontal on desktop) -->
       <section id="portfolio" class="hscroll relative" data-hscroll>
-        <div class="hscroll-pin flex flex-col justify-center md:h-svh md:overflow-hidden">
-          <div class="mb-12 flex flex-wrap items-end justify-between gap-4 px-5 md:mb-10 md:px-10">
-            <h2 class="display text-[16vw] md:text-[8.5vw]" data-split>Čo fotím</h2>
+        <div class="hscroll-pin flex flex-col justify-center md:h-svh md:overflow-hidden md:pb-[4vh] md:pt-[max(7rem,12vh)]">
+          <div class="mb-12 flex flex-wrap items-end justify-between gap-4 px-5 md:mb-[5vh] md:px-10">
+            <h2 class="display pt-[0.12em] text-[16vw] md:text-[min(7.5vw,12vh)]" data-split>Čo fotím</h2>
             <p class="eyebrow text-ink-muted" data-fade>(02) Portfólio — päť príbehov</p>
           </div>
-          <div class="hscroll-track flex flex-col gap-20 px-5 md:w-max md:flex-row md:items-start md:gap-[5vw] md:px-10">
-            <a href="svadby.html" class="hcard group block w-full md:w-[27vw]" data-cursor="Pozrieť">
+          <div class="hscroll-track flex flex-col gap-20 px-5 md:w-max md:flex-row md:items-start md:gap-[6vh] md:px-10">
+            <a href="svadby.html" class="hcard group block w-full md:w-[38vh]" data-cursor="Pozrieť">
               <div class="overflow-hidden"><x-photo src="svadby/2" sizes="(min-width:768px) 30vw, 90vw" class="hcard-img aspect-[4/5] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Nevesta a ženích v záhrade"></x-photo></div>
-              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Svadby</h3><span class="eyebrow text-ink-muted">01</span></div>
-              <p class="mt-2 max-w-sm text-ink-soft">Celý deň od príprav po posledný tanec — aj tam, kde práve nie ste.</p>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[min(3.2vw,5.5vh)]">Svadby</h3><span class="eyebrow text-ink-muted">01</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft md:text-sm">Celý deň od príprav po posledný tanec — aj tam, kde práve nie ste.</p>
             </a>
-            <a href="rodiny.html" class="hcard group block w-[85%] self-end md:mt-[14vh] md:w-[22vw] md:self-auto" data-cursor="Pozrieť">
+            <a href="rodiny.html" class="hcard group block w-[85%] self-end md:mt-[7vh] md:w-[32vh] md:self-auto" data-cursor="Pozrieť">
               <div class="overflow-hidden"><x-photo src="rodiny/1" sizes="(min-width:768px) 25vw, 80vw" class="hcard-img aspect-[3/4] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Rodina na deke pod stromom"></x-photo></div>
-              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Rodiny</h3><span class="eyebrow text-ink-muted">02</span></div>
-              <p class="mt-2 max-w-sm text-ink-soft">Šteklenie, naháňačky a všetko, čo je pre vás prirodzené.</p>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[min(3.2vw,5.5vh)]">Rodiny</h3><span class="eyebrow text-ink-muted">02</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft md:text-sm">Šteklenie, naháňačky a všetko, čo je pre vás prirodzené.</p>
             </a>
-            <a href="tehotenske.html" class="hcard group block w-[80%] md:w-[25vw]" data-cursor="Pozrieť">
+            <a href="tehotenske.html" class="hcard group block w-[80%] md:w-[36vh]" data-cursor="Pozrieť">
               <div class="overflow-hidden"><x-photo src="tehotenske/1" sizes="(min-width:768px) 28vw, 80vw" class="hcard-img aspect-[4/5] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Tehotenské fotenie v ateliéri"></x-photo></div>
-              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Tehotenské</h3><span class="eyebrow text-ink-muted">03</span></div>
-              <p class="mt-2 max-w-sm text-ink-soft">Spomienka na obdobie, keď na svet prichádza nový život.</p>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[min(3.2vw,5.5vh)]">Tehotenské</h3><span class="eyebrow text-ink-muted">03</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft md:text-sm">Spomienka na obdobie, keď na svet prichádza nový život.</p>
             </a>
-            <a href="parove.html" class="hcard group block w-full md:mt-[8vh] md:w-[34vw]" data-cursor="Pozrieť">
+            <a href="parove.html" class="hcard group block w-full md:mt-[4vh] md:w-[56vh]" data-cursor="Pozrieť">
               <div class="overflow-hidden"><x-photo src="parove/5" sizes="(min-width:768px) 36vw, 90vw" class="hcard-img aspect-[4/3] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Pár v makovom poli"></x-photo></div>
-              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Páry</h3><span class="eyebrow text-ink-muted">04</span></div>
-              <p class="mt-2 max-w-sm text-ink-soft">Na Chopku, v meste alebo so psom. Fotenie, ktoré je o vás.</p>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[min(3.2vw,5.5vh)]">Páry</h3><span class="eyebrow text-ink-muted">04</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft md:text-sm">Na Chopku, v meste alebo so psom. Fotenie, ktoré je o vás.</p>
             </a>
-            <a href="portrety.html" class="hcard group block w-[82%] self-end md:w-[22vw] md:self-auto" data-cursor="Pozrieť">
+            <a href="portrety.html" class="hcard group block w-[82%] self-end md:w-[32vh] md:self-auto" data-cursor="Pozrieť">
               <div class="overflow-hidden"><x-photo src="portrety/3" sizes="(min-width:768px) 25vw, 80vw" class="hcard-img aspect-[3/4] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Portrét ženy v ružových šatách"></x-photo></div>
-              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Portréty</h3><span class="eyebrow text-ink-muted">05</span></div>
-              <p class="mt-2 max-w-sm text-ink-soft">Deň len pre vás — alebo pre vás a vašu najlepšiu kamošku.</p>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[min(3.2vw,5.5vh)]">Portréty</h3><span class="eyebrow text-ink-muted">05</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft md:text-sm">Deň len pre vás — alebo pre vás a vašu najlepšiu kamošku.</p>
             </a>
-            <div class="hidden w-[26vw] self-center md:block">
-              <p class="display text-[4.4vw]">Každé fotenie sa začína <em>rozhovorom.</em></p>
+            <div class="hidden w-[40vh] self-center pr-[10vw] md:block md:box-content">
+              <p class="display text-[min(4.4vw,6.5vh)]">Každé fotenie sa začína <em>rozhovorom.</em></p>
               <a href="kontakt.html" class="btn-round mt-10 h-32 w-32"><span>Napíšte mi</span></a>
             </div>
           </div>
@@ -136,7 +134,7 @@
             <x-photo src="svadby/4" sizes="(min-width:768px) 24vw, 50vw" class="collage-img absolute left-[52%] top-[7%] w-[44vw] md:left-[66%] md:w-[21vw]" data-speed="-0.15"></x-photo>
             <x-photo src="vyber/5" sizes="(min-width:768px) 16vw, 40vw" class="collage-img absolute left-[36%] top-[19%] hidden w-[34vw] md:block md:w-[13vw]" data-speed="0.45"></x-photo>
             <x-photo src="rodiny/2" sizes="(min-width:768px) 26vw, 50vw" class="collage-img absolute left-[6%] top-[27%] w-[48vw] md:left-[10%] md:w-[23vw]" data-speed="-0.1"></x-photo>
-            <x-photo src="portrety/2" sizes="(min-width:768px) 18vw, 42vw" class="collage-img absolute left-[56%] top-[36%] w-[38vw] md:left-[74%] md:w-[15vw]" data-speed="0.35"></x-photo>
+            <x-photo src="tehotenske/5" sizes="(min-width:768px) 18vw, 42vw" class="collage-img absolute left-[56%] top-[36%] w-[38vw] md:left-[74%] md:w-[15vw]" data-speed="0.35"></x-photo>
             <x-photo src="svadby/5" sizes="(min-width:768px) 22vw, 48vw" class="collage-img absolute left-[40%] top-[48%] hidden w-[40vw] md:block md:w-[19vw]" data-speed="0.05"></x-photo>
             <x-photo src="tehotenske/3" sizes="(min-width:768px) 18vw, 44vw" class="collage-img absolute left-[4%] top-[55%] w-[42vw] md:left-[5%] md:top-[60%] md:w-[15vw]" data-speed="0.3"></x-photo>
             <x-photo src="vyber/11" sizes="(min-width:768px) 24vw, 50vw" class="collage-img absolute left-[50%] top-[64%] w-[46vw] md:left-[62%] md:w-[21vw]" data-speed="-0.2"></x-photo>
@@ -150,12 +148,12 @@
       <section class="px-5 py-32 md:px-10 md:py-52">
         <div class="grid items-end gap-12 md:grid-cols-12">
           <div class="relative md:col-span-5">
-            <div class="overflow-hidden"><x-photo src="vyber/15" sizes="(min-width:768px) 40vw, 90vw" class="reveal-img parallax-img aspect-[4/5]" alt="Fotografka Marušáková (zástupná fotografia)"></x-photo></div>
+            <div class="overflow-hidden"><x-photo src="vyber/15" sizes="(min-width:768px) 40vw, 90vw" class="reveal-img parallax-img aspect-[4/5]" alt="Monika Marušáková (zástupná fotografia)"></x-photo></div>
             <p class="eyebrow mt-3 text-ink-muted">[Sem príde vaša portrétna fotka]</p>
           </div>
           <div class="md:col-span-6 md:col-start-7">
             <p class="eyebrow mb-8 text-ink-muted" data-fade>(04) O mne</p>
-            <h2 class="display text-[15vw] md:text-[7.5vw]" data-split>Ahoj, som <em>[Meno]</em></h2>
+            <h2 class="display text-[15vw] md:text-[7.5vw]" data-split>Ahoj, som <em>Monika</em></h2>
             <div class="mt-10 grid gap-6 text-ink-soft md:grid-cols-2">
               <p data-fade>Fotografujem od čias, keď som si prvý raz požičala otcov fotoaparát a nevedela sa od neho odtrhnúť. Dnes je to moja práca aj moja najväčšia radosť.</p>
               <p data-fade>Milujem zlatú hodinku, jemný šum filmových farieb a ľudí, ktorí sa pred objektívom postupne uvoľnia. Na fotení sa preto hlavne rozprávame a smejeme.</p>

@@ -9,6 +9,8 @@ export function initImages() {
   }
 }
 
+// Custom cursor replaces the system one on mouse/trackpad devices: a small
+// inverting dot that grows over links, or a labelled disc over [data-cursor].
 export function initCursor() {
   if (!finePointer || reduced) return;
   const dot = $(".cursor-dot");
@@ -17,31 +19,47 @@ export function initCursor() {
   label.classList.remove("hidden");
   document.documentElement.classList.add("has-cursor");
 
-  const dx = gsap.quickTo(dot, "x", { duration: 0.15, ease: "power3" });
-  const dy = gsap.quickTo(dot, "y", { duration: 0.15, ease: "power3" });
-  const lx = gsap.quickTo(label, "x", { duration: 0.55, ease: "power3" });
-  const ly = gsap.quickTo(label, "y", { duration: 0.55, ease: "power3" });
-  let current = null;
+  const dx = gsap.quickTo(dot, "x", { duration: 0.12, ease: "power3" });
+  const dy = gsap.quickTo(dot, "y", { duration: 0.12, ease: "power3" });
+  const lx = gsap.quickTo(label, "x", { duration: 0.45, ease: "power3" });
+  const ly = gsap.quickTo(label, "y", { duration: 0.45, ease: "power3" });
+  const interactive = "a, button, label, select, summary, [role=button], input[type=checkbox], input[type=radio]";
+  let state = null;
+  let lastTarget = null;
+
+  const setState = (target) => {
+    const labelled = target?.closest("[data-cursor]");
+    const next = labelled ?? (target?.closest(interactive) ? "link" : null);
+    if (next === state) return;
+    state = next;
+    if (labelled) {
+      label.textContent = labelled.dataset.cursor;
+      const invert = labelled.hasAttribute("data-cursor-invert");
+      label.classList.toggle("is-invert", invert);
+      gsap.to(label, { scale: invert ? 1.5 : 1, duration: 0.5, ease: "expo.out" });
+      gsap.to(dot, { scale: 0, duration: 0.3 });
+    } else {
+      gsap.to(label, { scale: 0, duration: 0.4 });
+      gsap.to(dot, { scale: next === "link" ? 3.2 : 1, duration: 0.4, ease: "expo.out" });
+    }
+  };
 
   window.addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse") return;
     dx(e.clientX);
     dy(e.clientY);
     lx(e.clientX);
     ly(e.clientY);
-    const target = e.target.closest?.("[data-cursor]") ?? null;
-    if (target === current) return;
-    current = target;
-    if (target) {
-      label.textContent = target.dataset.cursor;
-      gsap.to(label, { scale: 1, duration: 0.5 });
-      gsap.to(dot, { scale: 0, duration: 0.3 });
-    } else {
-      gsap.to(label, { scale: 0, duration: 0.4 });
-      gsap.to(dot, { scale: 1, duration: 0.3 });
-    }
+    lastTarget = e.target instanceof Element ? e.target : null;
+    setState(lastTarget);
+  }, { passive: true });
+  document.documentElement.addEventListener("pointerleave", () => gsap.to([dot, label], { opacity: 0, duration: 0.3 }));
+  document.documentElement.addEventListener("pointerenter", () => gsap.to([dot, label], { opacity: 1, duration: 0.3 }));
+  window.addEventListener("pointerdown", () => gsap.to(dot, { scale: "*=0.7", duration: 0.15 }));
+  window.addEventListener("pointerup", () => {
+    state = undefined; // force the dot back to its hover size
+    setState(lastTarget);
   });
-  document.addEventListener("pointerleave", () => gsap.to([dot, label], { opacity: 0 }));
-  document.addEventListener("pointerenter", () => gsap.to([dot, label], { opacity: 1 }));
 }
 
 export function initMenu() {
@@ -160,23 +178,4 @@ export function initTransitions() {
 export function initFooter() {
   $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
   $$("[data-scroll-top]").forEach((b) => b.addEventListener("click", () => scrollTo(0)));
-
-  const link = $(".cta-link");
-  const float = $(".cta-float");
-  if (!link || !float || !finePointer || reduced) return;
-  const x = gsap.quickTo(float, "x", { duration: 0.7, ease: "power3" });
-  const y = gsap.quickTo(float, "y", { duration: 0.7, ease: "power3" });
-  const r = gsap.quickTo(float, "rotate", { duration: 0.9, ease: "power3" });
-  let lastX = 0;
-  link.addEventListener("pointerenter", (e) => {
-    gsap.set(float, { x: e.clientX, y: e.clientY });
-    gsap.to(float, { opacity: 1, scale: 1, duration: 0.6 });
-  });
-  link.addEventListener("pointermove", (e) => {
-    x(e.clientX);
-    y(e.clientY);
-    r(gsap.utils.clamp(-12, 12, (e.clientX - lastX) * 0.6));
-    lastX = e.clientX;
-  });
-  link.addEventListener("pointerleave", () => gsap.to(float, { opacity: 0, scale: 0.7, duration: 0.5 }));
 }

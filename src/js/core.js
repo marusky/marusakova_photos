@@ -4,6 +4,9 @@ import { SplitText } from "gsap/SplitText";
 import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
+// Mobile browsers resize the viewport when the address bar hides; recalculating
+// every trigger on that is what makes scrolling hitch on phones.
+ScrollTrigger.config({ ignoreMobileResize: true });
 gsap.defaults({ ease: "expo.out", duration: 1.1 });
 
 export { gsap, ScrollTrigger, SplitText };
@@ -17,7 +20,7 @@ export let lenis = null;
 
 export function initScroll() {
   if (reduced) return;
-  lenis = new Lenis({ lerp: 0.085, anchors: { offset: 0 } });
+  lenis = new Lenis({ lerp: 0.1, anchors: { offset: 0 } });
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);

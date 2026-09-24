@@ -12,79 +12,119 @@ export function runPreloader() {
   pre.classList.replace("hidden", "flex");
   stopScroll();
 
+  const mark = $(".preloader-mark", pre);
+  const bar = $(".preloader-bar", pre);
+  const pulse = gsap.fromTo(mark, { opacity: 1 }, { opacity: 0.35, duration: 0.9, ease: "sine.inOut", repeat: -1, yoyo: true });
+
+  // The line follows the first hero photo; it never takes less than ~1s or more than ~4s.
   const first = $(".hero-slide img");
   const loaded = new Promise((res) => {
     if (first?.complete) return res();
     first?.addEventListener("load", res, { once: true });
-    setTimeout(res, 3500);
+    first?.addEventListener("error", res, { once: true });
+    setTimeout(res, 4000);
   });
-  const counter = { v: 0 };
-  const count = $(".preloader-count");
-  const counting = gsap.to(counter, {
-    v: 100,
-    duration: 2,
-    ease: "power2.inOut",
-    onUpdate: () => (count.textContent = Math.round(counter.v)),
-  });
+  const progress = gsap.to(bar, { scaleX: 0.8, duration: 3, ease: "power2.out" });
 
-  return Promise.all([loaded, counting.then()]).then(
+  return Promise.all([loaded, new Promise((r) => setTimeout(r, 900))]).then(
     () =>
       new Promise((resolve) => {
+        progress.kill();
         gsap
-          .timeline({ onComplete: () => (pre.remove(), startScroll()) })
-          .to(pre.children, { opacity: 0, y: -30, duration: 0.6, stagger: 0.05, ease: "power2.in" })
-          .to(pre, { yPercent: -100, duration: 1.1, ease: "expo.inOut" }, "-=0.2")
-          .call(resolve, [], "-=0.7");
+          .timeline({ onComplete: () => (pulse.kill(), pre.remove(), startScroll()) })
+          .to(bar, { scaleX: 1, duration: 0.45, ease: "power2.inOut" })
+          .to(mark, { opacity: 0, y: -16, duration: 0.5, ease: "power2.in" }, "+=0.05")
+          .to(bar.parentElement, { opacity: 0, duration: 0.4 }, "<")
+          .to(pre, { yPercent: -100, duration: 1, ease: "expo.inOut" }, "-=0.15")
+          .call(resolve, [], "-=0.6");
       })
   );
 }
 
-// Small photo frame sitting on the giant title; scrolling opens it to full screen.
-function frameInset(hero, title) {
+// Where the small portrait frame sits before scrolling.
+function frameRect(hero, title) {
   const vw = innerWidth;
   const vh = hero.clientHeight;
-  const h0 = hero.getBoundingClientRect().top;
-  const t = title.getBoundingClientRect();
-  let top, bottom, w;
+  // offsetTop ignores transforms, so this is stable even mid-animation.
+  const block = title.parentElement;
+  const titleTop = block.offsetTop + title.offsetTop;
+  let y, h;
   if (vw < 768) {
-    // Phones: frame centred in the space above the title, title stays readable.
-    const space = title.previousElementSibling.getBoundingClientRect().top - h0 - 16;
-    const h = Math.min(space - 80, (vw - 40) * 1.35);
-    w = h / 1.35;
-    top = 80 + (space - 80 - h) / 2;
-    bottom = top + h;
+    // Phones: centred above the title so the name stays readable.
+    const space = block.offsetTop + title.previousElementSibling.offsetTop - 16;
+    h = Math.min(space - 80, (vw - 48) * 1.35);
+    y = 80 + (space - 80 - h) / 2;
   } else {
-    // Larger screens: frame overlaps the upper half of the giant name.
-    bottom = t.top - h0 + t.height * 0.55;
-    const h = Math.min(vh * 0.6, vw * 0.26 * 1.35);
-    w = h / 1.35;
-    top = bottom - h;
+    // Larger screens: overlaps the upper half of the giant name.
+    h = Math.min(vh * 0.58, vw * 0.25 * 1.35);
+    y = titleTop + title.offsetHeight * 0.55 - h;
   }
-  const side = (vw - w) / 2;
-  return `inset(${top}px ${side}px ${vh - bottom}px ${side}px)`;
+  const w = h / 1.35;
+  return { x: (vw - w) / 2, y, w, h };
 }
+
+const whenLoaded = (img) =>
+  img.complete && img.naturalWidth
+    ? Promise.resolve()
+    : new Promise((res) => {
+        img.loading = "eager";
+        img.addEventListener("load", res, { once: true });
+        img.addEventListener("error", res, { once: true });
+      });
+
+const lerp = (a, b, t) => a + (b - a) * t;
 
 export function initHero() {
   const hero = $("[data-hero]");
   if (!hero) return () => {};
   const media = $(".hero-media", hero);
+  const stage = $(".hero-stage", hero);
   const title = $(".hero-title", hero);
   const slides = $$(".hero-slide", hero);
   const overlay = $(".hero-overlay", hero);
   const chrome = $$(".hero-intro, .hero-scroll, [data-fade]", hero);
 
-  gsap.set(media, { clipPath: frameInset(hero, title) });
-  gsap.set(overlay, { zIndex: 5 });
-  gsap.set(slides, { zIndex: 1, clipPath: "inset(100% 0% 0% 0%)" });
-  gsap.set(slides[0], { zIndex: 2, clipPath: "inset(0% 0% 0% 0%)" });
+  // The photo is never cropped by CSS: the stage holds it at its natural 2:3
+  // shape and is only moved/scaled (GPU), while the frame is a rectangular clip.
+  // At every step the photo "covers" the current rectangle, like object-fit:
+  // cover with a focal point 35% from the top – so the small frame shows almost
+  // the whole picture and the full-screen state shows its most important band.
+  const FOCUS_Y = 0.35;
+  const state = { t: 0, reveal: 1 };
+  let from, vw, vh, photoH;
+  const measure = () => {
+    vw = innerWidth;
+    vh = hero.clientHeight;
+    photoH = stage.offsetHeight;
+    from = frameRect(hero, title);
+  };
+  const render = () => {
+    const t = state.t;
+    const x = lerp(from.x, 0, t);
+    const y = lerp(from.y, 0, t);
+    const w = lerp(from.w, vw, t);
+    const h = lerp(from.h, vh, t);
+    const scale = Math.max(w / vw, h / photoH);
+    const tx = x + (w - vw * scale) / 2;
+    const ty = y + (h - photoH * scale) * FOCUS_Y;
+    const top = y + h * (1 - state.reveal);
+    media.style.clipPath = `inset(${top}px ${vw - x - w}px ${vh - y - h}px ${x}px)`;
+    stage.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  };
+  measure();
+  render();
+  ScrollTrigger.addEventListener("refreshInit", measure);
+  ScrollTrigger.addEventListener("refresh", render);
+
+  gsap.set(slides, { autoAlpha: 0 });
+  gsap.set(slides[0], { autoAlpha: 1 });
 
   if (!reduced) {
     gsap
       .timeline({
-        scrollTrigger: { trigger: hero, start: "top top", end: "+=140%", pin: true, scrub: true, invalidateOnRefresh: true },
+        scrollTrigger: { trigger: hero, start: "top top", end: "+=140%", pin: true, scrub: true, anticipatePin: 1 },
       })
-      .fromTo(media, { clipPath: () => frameInset(hero, title) }, { clipPath: "inset(0px 0px 0px 0px)", ease: "power2.inOut", duration: 1 })
-      .fromTo(slides, { scale: 1.25 }, { scale: 1, ease: "power2.inOut", duration: 1 }, 0)
+      .to(state, { t: 1, ease: "power2.inOut", duration: 1, onUpdate: render }, 0)
       .to(title, { yPercent: 35, opacity: 0, ease: "power1.in", duration: 0.6 }, 0)
       .to(chrome, { opacity: 0, duration: 0.25, ease: "none" }, 0)
       .to(overlay, { opacity: 1, duration: 0.3, ease: "none" }, 0.72)
@@ -92,31 +132,39 @@ export function initHero() {
       .to({}, { duration: 0.15 });
 
     gsap.to($(".scroll-line", hero), { yPercent: 200, repeat: -1, duration: 1.6, ease: "expo.inOut" });
+  } else {
+    addEventListener("resize", () => (measure(), render()));
   }
 
-  // Slideshow inside the frame.
+  // Slideshow: crossfades only while the hero is on screen, and only to a photo that has loaded.
+  let visible = true;
+  new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(hero);
   let i = 0;
-  const next = () => {
-    if (!document.hidden) {
+  const next = async () => {
+    const n = (i + 1) % slides.length;
+    whenLoaded($("img", slides[(n + 1) % slides.length])); // warm up the one after
+    if (visible && !document.hidden) {
+      await whenLoaded($("img", slides[n]));
       const prev = slides[i];
-      i = (i + 1) % slides.length;
-      const cur = slides[i];
-      slides.forEach((s) => s !== prev && s !== cur && gsap.set(s, { zIndex: 1 }));
-      gsap.set(prev, { zIndex: 2 });
-      gsap.set(cur, { zIndex: 3 });
-      gsap.fromTo(cur, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.5, ease: "expo.inOut" });
-      gsap.fromTo($("img", cur), { scale: 1.25 }, { scale: 1, duration: 2.4, ease: "expo.out" });
+      const cur = slides[n];
+      i = n;
+      gsap.set(cur, { zIndex: 2 });
+      gsap.set(prev, { zIndex: 1 });
+      gsap.fromTo(cur, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.3, ease: "power2.inOut", onComplete: () => gsap.set(prev, { autoAlpha: 0 }) });
+      gsap.fromTo($("img", cur), { scale: 1.06 }, { scale: 1, duration: 3, ease: "power2.out" });
     }
-    gsap.delayedCall(3.4, next);
+    gsap.delayedCall(3.8, next);
   };
 
   // Entrance, called once the preloader / page curtain is out of the way.
   return () => {
     const chars = SplitText.create(title, { type: "chars", mask: "chars" }).chars;
+    state.reveal = 0;
+    render();
     const tl = gsap.timeline();
     tl.from(chars, { yPercent: 105, duration: 1.6, stagger: 0.045, ease: "expo.out" })
-      .from(slides[0], { clipPath: "inset(100% 0% 0% 0%)", duration: 1.6, ease: "expo.inOut" }, 0.1)
-      .from($("img", slides[0]), { scale: 1.5, duration: 2.2, ease: "expo.out" }, 0.3);
+      .to(state, { reveal: 1, duration: 1.6, ease: "expo.inOut", onUpdate: render }, 0.1)
+      .from($("img", slides[0]), { scale: 1.15, duration: 2.4, ease: "expo.out" }, 0.3);
     gsap.delayedCall(4, next);
     return tl;
   };
@@ -144,6 +192,7 @@ export function initHorizontal() {
         end: () => `+=${distance()}`,
         pin: true,
         scrub: 1,
+        anticipatePin: 1,
         invalidateOnRefresh: true,
       },
     });
@@ -176,8 +225,13 @@ export function initTestimonials() {
   const show = (n, dir = 1) => {
     const next = (n + items.length) % items.length;
     if (next === cur) return;
-    gsap.to(items[cur], { autoAlpha: 0, y: -30 * dir, duration: 0.6, ease: "power2.in" });
-    gsap.fromTo(items[next], { autoAlpha: 0, y: 40 * dir }, { autoAlpha: 1, y: 0, duration: 1.2, delay: 0.45 });
+    // Rapid clicks: drop any running fades so only two quotes are ever involved.
+    gsap.killTweensOf(items);
+    items.forEach((it, k) => k !== cur && gsap.set(it, { autoAlpha: 0, y: 0 }));
+    gsap
+      .timeline()
+      .to(items[cur], { autoAlpha: 0, y: -24 * dir, duration: 0.35, ease: "power2.in" })
+      .fromTo(items[next], { autoAlpha: 0, y: 32 * dir }, { autoAlpha: 1, y: 0, duration: 0.9, ease: "expo.out" });
     cur = next;
     index.textContent = String(cur + 1).padStart(2, "0");
     schedule();
