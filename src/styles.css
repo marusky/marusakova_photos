@@ -1,0 +1,223 @@
+@import "tailwindcss";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/instrument-serif/400-italic.css";
+@import "@fontsource-variable/instrument-sans/wght.css";
+
+@source "../*.html";
+@source "./partials";
+@source "../vite.config.js";
+
+@theme {
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Warm monochrome: paper, ink and the greys in between. */
+  --color-paper: #f2eee7;
+  --color-paper-deep: #e8e2d8;
+  --color-ink: #1b1815;
+  --color-ink-soft: #3a3530;
+  --color-ink-muted: #8a8279;
+  --color-line: #cfc7bb;
+  --color-night: #12100e;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  body {
+    @apply font-sans text-[15px] leading-relaxed;
+    transition: background-color 0.8s var(--ease-out-expo), color 0.8s var(--ease-out-expo);
+  }
+  body.is-dark {
+    background: var(--color-night);
+    color: var(--color-paper);
+  }
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  :focus-visible {
+    outline: 1px solid currentColor;
+    outline-offset: 4px;
+  }
+}
+
+@utility display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+}
+
+@utility eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+}
+
+@layer components {
+  /* Blurred placeholder under every photo until it has loaded. */
+  picture {
+    display: block;
+    background: var(--lqip) center / cover no-repeat, var(--color-paper-deep);
+  }
+  picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.9s var(--ease-out-expo);
+  }
+  picture img.is-loaded {
+    opacity: 1;
+  }
+
+  /* Film grain over everything; subtle, and above photos too. */
+  .grain {
+    position: fixed;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+    z-index: 90;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain 1s steps(6) infinite;
+  }
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(-3%, 2%); }
+    40% { transform: translate(2%, -4%); }
+    60% { transform: translate(-4%, -1%); }
+    80% { transform: translate(3%, 3%); }
+  }
+
+  .link-line {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 0.6s var(--ease-out-expo);
+  }
+  .link-line:hover,
+  .link-line.is-active {
+    background-size: 100% 1px;
+  }
+
+  .btn-round {
+    @apply relative inline-flex items-center justify-center rounded-full border border-current eyebrow overflow-hidden;
+    isolation: isolate;
+  }
+  .btn-round::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: currentColor;
+    border-radius: inherit;
+    transform: translateY(101%);
+    transition: transform 0.6s var(--ease-out-expo);
+  }
+  .btn-round > span {
+    transition: color 0.4s;
+  }
+  .btn-round:hover::before {
+    transform: translateY(0);
+  }
+  .btn-round:hover > span {
+    color: var(--color-paper);
+  }
+  .is-dark .btn-round:hover > span,
+  .on-dark .btn-round:hover > span {
+    color: var(--color-ink);
+  }
+
+  /* Split-text helpers (lines are wrapped by JS). */
+  /* Extra room so the mask doesn't clip diacritics (Č, Ž, Ľ…) or descenders. */
+  .split-line {
+    overflow: hidden;
+    padding-block: 0.14em 0.1em;
+    margin-block: -0.14em -0.1em;
+  }
+
+  /* Custom cursor (pointer devices only, toggled from JS). */
+  .cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    pointer-events: none;
+    mix-blend-mode: difference;
+  }
+  .cursor-dot {
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    border-radius: 999px;
+    background: #fff;
+  }
+  .cursor-label {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 101;
+    pointer-events: none;
+    width: 96px;
+    height: 96px;
+    margin: -48px 0 0 -48px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transform: scale(0);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .has-cursor [data-cursor],
+    .has-cursor [data-cursor] * {
+      cursor: none;
+    }
+  }
+
+  /* Form fields: hairline underline style. */
+  .field {
+    @apply w-full bg-transparent border-0 border-b border-line py-3 text-lg outline-none transition-colors;
+    border-radius: 0;
+  }
+  .field:focus {
+    border-color: var(--color-ink);
+  }
+  .field::placeholder {
+    color: var(--color-ink-muted);
+    opacity: 0.6;
+  }
+  .chip input:checked + span {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-color: var(--color-ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

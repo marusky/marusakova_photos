@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <!-- @include head -->
+    <title>Kontakt — Marušáková photos</title>
+    <meta name="description" content="Rezervujte si fotenie – svadby, rodiny, tehotenské, párové fotenie a portréty." />
+  </head>
+  <body data-page="kontakt">
+    <!-- @include header -->
+
+    <main id="obsah" class="px-5 pb-28 pt-32 md:px-10 md:pb-40 md:pt-40">
+      <p class="eyebrow mb-8 text-ink-muted" data-fade>Kontakt &amp; rezervácie</p>
+      <h1 class="display text-[21vw] leading-[0.82] tracking-[-0.04em] md:text-[13vw]" data-split>Poďme sa<br /><em class="pl-[10vw]">spoznať</em></h1>
+
+      <div class="mt-20 grid gap-20 md:mt-32 md:grid-cols-12 md:gap-8">
+        <aside class="md:col-span-4">
+          <dl class="space-y-10">
+            <div data-fade>
+              <dt class="eyebrow mb-2 text-ink-muted">E-mail</dt>
+              <dd><a href="mailto:ahoj@marusakova.example" class="link-line font-serif text-3xl">ahoj@marusakova.example</a></dd>
+            </div>
+            <div data-fade>
+              <dt class="eyebrow mb-2 text-ink-muted">Telefón</dt>
+              <dd><a href="tel:+421900000000" class="link-line font-serif text-3xl">+421 900 000 000</a></dd>
+            </div>
+            <div data-fade>
+              <dt class="eyebrow mb-2 text-ink-muted">Instagram</dt>
+              <dd><a href="https://www.instagram.com/" target="_blank" rel="noopener" class="link-line font-serif text-3xl">@[instagram]</a></dd>
+            </div>
+            <div data-fade>
+              <dt class="eyebrow mb-2 text-ink-muted">Kde fotím</dt>
+              <dd class="max-w-xs text-ink-soft">[Mesto] a okolie bez príplatku za dopravu. Rada prídem kamkoľvek na Slovensku aj za hranice.</dd>
+            </div>
+          </dl>
+          <div class="mt-16 hidden w-2/3 overflow-hidden md:block">
+            <x-photo src="vyber/14" sizes="25vw" class="reveal-img aspect-[4/5]" alt="Rodina pod stromom"></x-photo>
+          </div>
+        </aside>
+
+        <form class="md:col-span-7 md:col-start-6" data-contact data-email="ahoj@marusakova.example" action="" method="post">
+          <fieldset data-fade>
+            <legend class="eyebrow mb-5 text-ink-muted">Čo by ste chceli nafotiť?</legend>
+            <div class="flex flex-wrap gap-2.5">
+              <label class="chip cursor-pointer"><input type="radio" name="typ" value="Svadba" class="peer sr-only" required /><span class="block rounded-full border border-line px-5 py-2.5 transition-colors peer-focus-visible:outline hover:border-ink">Svadba</span></label>
+              <label class="chip cursor-pointer"><input type="radio" name="typ" value="Rodina" class="peer sr-only" /><span class="block rounded-full border border-line px-5 py-2.5 transition-colors peer-focus-visible:outline hover:border-ink">Rodina</span></label>
+              <label class="chip cursor-pointer"><input type="radio" name="typ" value="Tehotenské" class="peer sr-only" /><span class="block rounded-full border border-line px-5 py-2.5 transition-colors peer-focus-visible:outline hover:border-ink">Tehotenské</span></label>
+              <label class="chip cursor-pointer"><input type="radio" name="typ" value="Párové" class="peer sr-only" /><span class="block rounded-full border border-line px-5 py-2.5 transition-colors peer-focus-visible:outline hover:border-ink">Párové</span></label>
+              <label class="chip cursor-pointer"><input type="radio" name="typ" value="Portrét" class="peer sr-only" /><span class="block rounded-full border border-line px-5 py-2.5 transition-colors peer-focus-visible:outline hover:border-ink">Portrét</span></label>
+              <label class="chip cursor-pointer"><input type="radio" name="typ" value="Iné" class="peer sr-only" /><span class="block rounded-full border border-line px-5 py-2.5 transition-colors peer-focus-visible:outline hover:border-ink">Niečo iné</span></label>
+            </div>
+          </fieldset>
+
+          <div class="mt-14 grid gap-x-8 gap-y-10 md:grid-cols-2">
+            <label class="block" data-fade><span class="eyebrow text-ink-muted">Meno *</span><input class="field" type="text" name="meno" autocomplete="name" required placeholder="Vaše meno" /></label>
+            <label class="block" data-fade><span class="eyebrow text-ink-muted">E-mail *</span><input class="field" type="email" name="email" autocomplete="email" required placeholder="vas@email.sk" /></label>
+            <label class="block" data-fade><span class="eyebrow text-ink-muted">Telefón</span><input class="field" type="tel" name="telefon" autocomplete="tel" placeholder="+421" /></label>
+            <label class="block" data-fade><span class="eyebrow text-ink-muted">Predpokladaný termín</span><input class="field" type="text" name="termin" placeholder="napr. jún 2027" /></label>
+            <label class="block md:col-span-2" data-fade><span class="eyebrow text-ink-muted">Miesto</span><input class="field" type="text" name="miesto" placeholder="Kde by ste sa chceli fotiť?" /></label>
+            <label class="block md:col-span-2" data-fade><span class="eyebrow text-ink-muted">Správa *</span><textarea class="field min-h-40 resize-y" name="sprava" rows="5" required placeholder="Povedzte mi niečo o sebe a o tom, čo si predstavujete…"></textarea></label>
+          </div>
+
+          <label class="mt-10 flex items-start gap-3 text-sm text-ink-soft" data-fade>
+            <input type="checkbox" name="suhlas" required class="mt-1 h-4 w-4 accent-ink" />
+            <span>Súhlasím so spracovaním osobných údajov za účelom odpovede na môj dopyt.</span>
+          </label>
+
+          <div class="mt-14 flex flex-wrap items-center gap-8" data-fade>
+            <button type="submit" class="btn-round h-36 w-36 disabled:opacity-40"><span>Odoslať</span></button>
+            <p class="max-w-xs text-sm text-ink-muted">Odpovedám zvyčajne do 48 hodín. Ak je termín súrny, zavolajte mi.</p>
+          </div>
+          <p class="mt-8 font-serif text-2xl italic" data-form-status aria-live="polite"></p>
+        </form>
+      </div>
+    </main>
+
+    <!-- @include footer -->
+  </body>
+</html>

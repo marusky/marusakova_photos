@@ -1,0 +1,26 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#f2eee7" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<script>
+  // Hide animated elements until JS has set them up, but never forever.
+  (() => {
+    const d = document.documentElement;
+    d.classList.add("js");
+    try {
+      if (sessionStorage.getItem("pt")) d.classList.add("pt");
+      else if (!sessionStorage.getItem("seen") && !matchMedia("(prefers-reduced-motion: reduce)").matches) d.classList.add("first");
+    } catch {}
+    setTimeout(() => d.classList.add("ready"), 4000);
+  })();
+</script>
+<style>
+  html.js:not(.ready) [data-split],
+  html.js:not(.ready) [data-fade] { visibility: hidden; }
+  .page-transition { transform: translateY(100%); }
+  html.pt:not(.ready) .page-transition { transform: none; }
+  html.first .preloader { display: flex; }
+  html.first.ready:not(.js-ok) .preloader { display: none; }
+</style>
+<link rel="stylesheet" href="src/styles.css" />
+<script type="module" src="src/main.js"></script>

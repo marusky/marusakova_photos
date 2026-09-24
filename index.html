@@ -1,590 +1,201 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="sk">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>marušáková photos</title>
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- @include head -->
+    <title>Marušáková photos — svadobná a rodinná fotografka</title>
+    <meta name="description" content="Svadobná a rodinná lifestyle fotografka. Svadby, rodinné, tehotenské, párové fotenia a portréty. Vaše príbehy mojimi očami." />
   </head>
-  <body>
-    <main
-      class="scroll-smooth lg:snap-y lg:snap-mandatory lg:snap-always overflow-y-scroll h-screen"
-    >
-      <section class="snap-center min-h-screen pt-12 lg:hidden">
-        <div
-          class="px-6 text-4xl font-semibold tracking-tighter text-center text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-700"
-        >
-          marušáková photos
-        </div>
-        <p class="text-center px-6 mt-8 max-w-md mx-auto">
-          Svadobná a rodinná lifestyle fotografka. <br />
-          Vaše príbehy mojimi očami.
-        </p>
+  <body data-page="home">
+    <!-- @include header -->
 
-        <button
-          class="block mx-auto mt-8 px-16 py-2.5 rounded-2xl text-white bg-gradient-to-br from-black to-gray-700 font-normal shadow-lg shadow-black/30"
-        >
-          Rezervovať fotenie
-        </button>
-        <div
-          class="mt-8 h-[27rem] flex gap-6 snap-x snap-always snap-mandatory overflow-x-scroll pb-10"
-        >
-          <img
-            src="images/12.jpg"
-            alt=""
-            class="ml-24 sm:ml-6 rounded-3xl h-full w-72 object-cover object-center snap-center translate-y-8"
-          />
-          <img
-            src="images/13.jpg"
-            alt=""
-            class="rounded-3xl h-full w-72 object-cover object-right snap-center"
-          />
-          <img
-            src="images/14.jpg"
-            alt=""
-            class="rounded-3xl h-full w-72 object-cover object-right snap-center translate-y-8"
-          />
-          <img
-            src="images/15.jpg"
-            alt=""
-            class="rounded-3xl h-full w-72 object-cover object-right snap-center"
-          />
-        </div>
-      </section>
+    <div class="preloader fixed inset-0 z-[85] hidden flex-col justify-between bg-paper px-5 py-5 text-ink md:px-10 md:py-7" aria-hidden="true">
+      <p class="font-serif text-[1.65rem] leading-none">Marušáková <span class="italic">photos</span></p>
+      <div class="flex items-end justify-between">
+        <p class="eyebrow max-w-40 text-ink-muted">Vaše príbehy mojimi očami</p>
+        <p class="display text-[28vw] leading-[0.75] md:text-[16vw]"><span class="preloader-count">0</span></p>
+      </div>
+    </div>
 
-      <section
-        class="hidden lg:grid snap-center h-screen grid-rows-3 grid-cols-4 gap-3 p-3 bg-gradient-to-tl from-white to-neutral-100"
-      >
-        <div
-          class="rounded-3xl overflow-hidden col-start-1 row-start-1 col-end-1 row-end-3"
-        >
-          <img
-            src="images/11.jpeg"
-            alt=""
-            class="h-full object-cover object-center"
-          />
-        </div>
-        <div class="rounded-3xl overflow-hidden bg-stone-400 col-start-2">
-          <img
-            src="images/15.jpg"
-            alt=""
-            class="h-full w-full object-cover object-center"
-          />
-        </div>
-        <div class="rounded-3xl overflow-hidden bg-stone-300 col-start-3">
-          <img
-            src="images/16.jpg"
-            alt=""
-            class="h-full w-full object-cover object-center"
-          />
-        </div>
-        <div
-          class="rounded-3xl overflow-hidden bg-gradient-to-br from-white to-neutral-100 flex flex-col justify-center items-center"
-        >
-          <div
-            class="px-6 text-4xl xl:text-5xl 2xl:text-6xl font-semibold tracking-tighter text-center text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-700"
-          >
-            marušáková
+    <main id="obsah">
+      <!-- HERO -->
+      <section class="hero relative h-svh min-h-[560px] overflow-hidden" data-hero>
+        <div class="absolute inset-x-0 bottom-0 z-0 px-2 pb-[4vh] md:pb-3">
+          <div class="mb-3 flex justify-between px-3 md:mb-1 md:px-8">
+            <p class="eyebrow" data-fade>Svadby · Rodiny · Portréty</p>
+            <p class="eyebrow hidden sm:block" data-fade>Slovensko — celý svet</p>
           </div>
+          <h1 class="hero-title display whitespace-nowrap text-center text-[24.6vw] leading-[0.76] tracking-[-0.045em]" aria-label="Marušáková photos">Marušáková</h1>
+        </div>
 
-          <div
-            class="font-light text-2xl xl:text-3xl 2xl:text-4xl mt-1 text-center"
-          >
-            photos
-          </div>
+        <div class="hero-intro absolute left-5 top-[24%] z-20 hidden max-w-[15rem] md:left-10 md:block">
+          <p class="text-ink-soft" data-fade>Svadobná a rodinná lifestyle fotografka. Zachytávam tiché chvíle, ktoré by ste inak prehliadli.</p>
         </div>
-        <div
-          class="rounded-3xl overflow-hidden bg-stone-400 col-start-4 row-start-1 row-end-3"
-        >
-          <img
-            src="images/13.jpg"
-            alt=""
-            class="h-full w-full object-cover object-right"
-          />
-        </div>
-        <div
-          class="rounded-3xl overflow-hidden bg-stone-500 col-start-3 row-span-2"
-        >
-          <img
-            src="images/14.jpg"
-            alt=""
-            class="h-full object-cover object-center"
-          />
-        </div>
-        <div
-          class="rounded-3xl overflow-hidden bg-stone-300 col-start-1 row-start-3 col-span-2"
-        >
-          <img
-            src="images/12.jpg"
-            alt=""
-            class="w-full h-full object-cover object-center"
-          />
-        </div>
-        <div
-          class="rounded-3xl overflow-hidden col-start-4 row-start-3 flex justify-center items-center"
-        >
-          <div
-            class="w-20 h-20 bg-gradient-to-br from-black to-gray-600 animate-bounce flex rounded-full"
-          >
-            <i
-              class="fa fa-arrow-down font-light text-4xl text-white m-auto"
-            ></i>
+        <a href="#uvod" class="hero-scroll eyebrow absolute right-5 top-[24%] z-20 hidden items-center gap-3 md:right-10 md:flex" data-fade>
+          Scrollujte <span class="relative block h-12 w-px overflow-hidden bg-ink/15"><span class="scroll-line absolute inset-x-0 top-0 h-1/2 bg-ink"></span></span>
+        </a>
+
+        <div class="hero-media absolute inset-0 z-10" style="clip-path: inset(22% 38% 30% 38%)">
+          <x-photo src="vyber/4" sizes="100vw" eager class="hero-slide absolute inset-0 h-full" alt="Pár pri západe slnka"></x-photo>
+          <x-photo src="svadby/7" sizes="100vw" class="hero-slide absolute inset-0 h-full" alt="Novomanželia v horách"></x-photo>
+          <x-photo src="vyber/13" sizes="100vw" class="hero-slide absolute inset-0 h-full" alt="Dievčatá v objatí v zlatom svetle"></x-photo>
+          <x-photo src="portrety/4" sizes="100vw" class="hero-slide absolute inset-0 h-full" alt="Portrét ženy v kožuchu"></x-photo>
+          <x-photo src="vyber/6" sizes="100vw" class="hero-slide absolute inset-0 h-full" alt="Pár v poli pri západe slnka"></x-photo>
+          <div class="hero-overlay absolute inset-0 flex flex-col items-center justify-center bg-black/25 px-5 text-center text-paper opacity-0">
+            <p class="eyebrow mb-6">Marušáková photos</p>
+            <p class="display text-[13vw] md:text-[7.5vw]">Vaše príbehy<br /><em>mojimi očami</em></p>
           </div>
         </div>
       </section>
 
-      <section
-        class="snap-center min-h-screen lg:h-screen grid grid-cols-4 grid-rows-6 gap-3 mb-16"
-      >
-        <div
-          class="lg:col-start-1 lg:row-start-1 col-span-4 lg:col-span-2 row-span-3 lg:row-span-6 m-auto px-8"
-        >
-          <div>
-            <div
-              class="text-4xl font-semibold tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-700"
-            >
-              Svadobné
+      <!-- INTRO -->
+      <section id="uvod" class="px-5 py-32 md:px-10 md:py-52">
+        <div class="grid gap-8 md:grid-cols-12">
+          <p class="eyebrow pt-3 text-ink-muted md:col-span-2" data-fade>(01) Úvod</p>
+          <p class="scrub-text font-serif text-[9.5vw] leading-[1.02] tracking-[-0.01em] md:col-span-10 md:text-[4.7vw]">
+            Fotím ľudí takých, akí sú,
+            <span class="pill inline-block h-[0.78em] w-[1.6em] translate-y-[0.08em] overflow-hidden rounded-full align-baseline"><x-photo src="vyber/1" sizes="160px" class="h-full"></x-photo></span>
+            keď zabudnú na objektív. Svadby, rodiny, očakávanie
+            <span class="pill inline-block h-[0.78em] w-[1.6em] translate-y-[0.08em] overflow-hidden rounded-full align-baseline"><x-photo src="tehotenske/2" sizes="160px" class="h-full"></x-photo></span>
+            aj lásku&nbsp;— <em>v prirodzenom svetle, potichu a úprimne.</em>
+          </p>
+        </div>
+        <div class="mt-20 grid gap-10 md:mt-28 md:grid-cols-12">
+          <div class="md:col-span-3 md:col-start-3">
+            <x-photo src="vyber/16" sizes="(min-width:768px) 25vw, 60vw" class="reveal-img aspect-[4/5] w-3/5 md:w-full" alt="Dve dievčatká v tráve"></x-photo>
+          </div>
+          <div class="md:col-span-4 md:col-start-7 md:self-end">
+            <p class="text-ink-soft" data-fade>Nebudem vás celý čas aranžovať. Dám vám priestor byť sami sebou a zachytím to, čo sa medzi pózami naozaj deje: smiech, pohľady, dotyky aj malé chaotické chvíle, ktoré o vás hovoria najviac.</p>
+            <a href="o-mne.html" class="btn-round mt-10 h-28 w-28" data-fade><span>O mne</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO (horizontal on desktop) -->
+      <section id="portfolio" class="hscroll relative" data-hscroll>
+        <div class="hscroll-pin flex flex-col justify-center md:h-svh md:overflow-hidden">
+          <div class="mb-12 flex flex-wrap items-end justify-between gap-4 px-5 md:mb-10 md:px-10">
+            <h2 class="display text-[16vw] md:text-[8.5vw]" data-split>Čo fotím</h2>
+            <p class="eyebrow text-ink-muted" data-fade>(02) Portfólio — päť príbehov</p>
+          </div>
+          <div class="hscroll-track flex flex-col gap-20 px-5 md:w-max md:flex-row md:items-start md:gap-[5vw] md:px-10">
+            <a href="svadby.html" class="hcard group block w-full md:w-[27vw]" data-cursor="Pozrieť">
+              <div class="overflow-hidden"><x-photo src="svadby/2" sizes="(min-width:768px) 30vw, 90vw" class="hcard-img aspect-[4/5] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Nevesta a ženích v záhrade"></x-photo></div>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Svadby</h3><span class="eyebrow text-ink-muted">01</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft">Celý deň od príprav po posledný tanec — aj tam, kde práve nie ste.</p>
+            </a>
+            <a href="rodiny.html" class="hcard group block w-[85%] self-end md:mt-[14vh] md:w-[22vw] md:self-auto" data-cursor="Pozrieť">
+              <div class="overflow-hidden"><x-photo src="rodiny/1" sizes="(min-width:768px) 25vw, 80vw" class="hcard-img aspect-[3/4] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Rodina na deke pod stromom"></x-photo></div>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Rodiny</h3><span class="eyebrow text-ink-muted">02</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft">Šteklenie, naháňačky a všetko, čo je pre vás prirodzené.</p>
+            </a>
+            <a href="tehotenske.html" class="hcard group block w-[80%] md:w-[25vw]" data-cursor="Pozrieť">
+              <div class="overflow-hidden"><x-photo src="tehotenske/1" sizes="(min-width:768px) 28vw, 80vw" class="hcard-img aspect-[4/5] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Tehotenské fotenie v ateliéri"></x-photo></div>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Tehotenské</h3><span class="eyebrow text-ink-muted">03</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft">Spomienka na obdobie, keď na svet prichádza nový život.</p>
+            </a>
+            <a href="parove.html" class="hcard group block w-full md:mt-[8vh] md:w-[34vw]" data-cursor="Pozrieť">
+              <div class="overflow-hidden"><x-photo src="parove/5" sizes="(min-width:768px) 36vw, 90vw" class="hcard-img aspect-[4/3] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Pár v makovom poli"></x-photo></div>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Páry</h3><span class="eyebrow text-ink-muted">04</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft">Na Chopku, v meste alebo so psom. Fotenie, ktoré je o vás.</p>
+            </a>
+            <a href="portrety.html" class="hcard group block w-[82%] self-end md:w-[22vw] md:self-auto" data-cursor="Pozrieť">
+              <div class="overflow-hidden"><x-photo src="portrety/3" sizes="(min-width:768px) 25vw, 80vw" class="hcard-img aspect-[3/4] transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105" alt="Portrét ženy v ružových šatách"></x-photo></div>
+              <div class="mt-5 flex items-baseline justify-between"><h3 class="font-serif text-5xl transition-all group-hover:italic md:text-[3.4vw]">Portréty</h3><span class="eyebrow text-ink-muted">05</span></div>
+              <p class="mt-2 max-w-sm text-ink-soft">Deň len pre vás — alebo pre vás a vašu najlepšiu kamošku.</p>
+            </a>
+            <div class="hidden w-[26vw] self-center md:block">
+              <p class="display text-[4.4vw]">Každé fotenie sa začína <em>rozhovorom.</em></p>
+              <a href="kontakt.html" class="btn-round mt-10 h-32 w-32"><span>Napíšte mi</span></a>
             </div>
-            <p class="text-center max-w-md lg:max-w-sm mt-8">
-              Fotenie svadobného dňa je pre mňa veľká zodpovednosť aj zážitok.
-              Zachytím okamihy, ku ktorým sa každý z nás rád vracia - lásku
-              mladomanželov, rodinu, tanec, ale aj detaily, ako napríklad
-              výzdobu. Budem tam, kde sa niečo deje, dokonca aj tam, kde nie ste
-              vy, aby ste si, pri pozeraní fotiek, mohli váš veľký deň užiť
-              znovu.
-            </p>
-
-            <p
-              class="text-center max-w-md lg:max-w-sm mt-6 text-sm text-gray-600"
-            >
-              Svadobné fotenie zahŕňa fotenie príprav nevesty a ženícha, fotenie
-              obradu, svadobnú reportáž a fotenie svadobných potrétov, ktoré je
-              možné nafotiť aj v iný, ako váš svadobný, deň.
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="row-start-4 lg:row-start-1 col-span-4 lg:col-span-2 row-span-3 lg:row-span-6 grid grid-flow-col auto-cols-max lg:auto-cols-auto lg:grid-cols-2 lg:grid-rows-3 pb-12 pt-4 lg:py-3 lg:pr-3 gap-6 lg:gap-3 snap-x snap-always snap-mandatory overflow-x-scroll overflow-y-hidden"
-        >
-          <div
-            class="ml-24 lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-1"
-          >
-            <img
-              src="images/weddings/1.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-2 lg:row-start-1 lg:row-span-2"
-          >
-            <img
-              src="images/weddings/2.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/weddings/3.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-2 lg:row-start-3"
-          >
-            <img
-              src="images/weddings/4.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/weddings/5.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-2 lg:row-start-3"
-          >
-            <img
-              src="images/weddings/6.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/weddings/7.jpeg"
-              alt=""
-              class="object-cover object-center h-full lg:w-full"
-            />
           </div>
         </div>
       </section>
 
-      <section
-        class="snap-center min-h-screen lg:h-screen grid grid-cols-4 grid-rows-6 gap-3 mb-14"
-      >
-        <div
-          class="lg:col-start-1 lg:row-start-1 col-span-4 lg:col-span-2 row-span-3 lg:row-span-6 m-auto px-8"
-        >
-          <div>
-            <div
-              class="text-4xl font-semibold tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-700"
-            >
-              Rodinné
-            </div>
-            <p class="text-center max-w-md lg:max-w-sm mt-8">
-              Na rodinnom fotení sa hráme, šteklíme, naháňame a robíme to, čo je
-              pre vás s deťmi najprirodzenejšie. Práve tak totiž vznikajú tie
-              najkrajšie momentky. Fotiť sa môžete na jar na rozkvitnutej lúke
-              či u vás v záhrade, v lete pri západe slnka, na jeseň v padajúcom
-              lístí alebo <span class="whitespace-nowrap">v zime</span> na
-              sánkach.
-            </p>
-
-            <p
-              class="text-center max-w-md lg:max-w-sm mt-6 text-sm text-gray-600"
-            >
-              V exteriéri mám pre vás pripravené rôzne scény podľa ročného
-              obdobia a vašich preferencií. Ak preferujete interiér, fotenie je
-              možné uskutočniť aj v ateliéri.
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="row-start-4 lg:row-start-1 col-span-4 lg:col-span-2 row-span-3 lg:row-span-6 grid grid-flow-col auto-cols-max lg:auto-cols-auto lg:grid-cols-2 lg:grid-rows-3 pb-8 lg:py-3 lg:pr-3 gap-6 lg:gap-3 snap-x snap-always snap-mandatory overflow-x-scroll overflow-y-hidden"
-        >
-          <div
-            class="ml-24 lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-1 lg:col-span-2"
-          >
-            <img
-              src="images/families/1.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-1 lg:row-start-2"
-          >
-            <img
-              src="images/families/2.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-2 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/families/3.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-1 lg:row-start-3"
-          >
-            <img
-              src="images/families/4.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/families/5.jpeg"
-              alt=""
-              class="object-cover object-bottom w-full h-full"
-            />
-          </div>
-          <div
-            class="rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-1 lg:row-start-3"
-          >
-            <img
-              src="images/families/6.jpeg"
-              alt=""
-              class="object-cover object-bottom lg:object-center w-full h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/families/7.jpeg"
-              alt=""
-              class="object-cover object-center w-full h-full"
-            />
+      <!-- MARQUEE -->
+      <section class="marquee mt-32 overflow-hidden border-y border-line py-8 md:mt-16 md:py-12" aria-hidden="true">
+        <div class="marquee-track flex w-max items-center whitespace-nowrap font-serif text-[20vw] italic leading-none md:text-[11vw]">
+          <div class="marquee-group flex items-center">
+            <span class="px-[3vw]">svadby</span><span class="inline-block h-[0.55em] w-[0.55em] overflow-hidden rounded-full"><x-photo src="vyber/11" sizes="200px" class="h-full"></x-photo></span>
+            <span class="px-[3vw]">rodiny</span><span class="inline-block h-[0.55em] w-[0.55em] overflow-hidden rounded-full"><x-photo src="rodiny/4" sizes="200px" class="h-full"></x-photo></span>
+            <span class="px-[3vw]">tehotenské</span><span class="inline-block h-[0.55em] w-[0.55em] overflow-hidden rounded-full"><x-photo src="tehotenske/4" sizes="200px" class="h-full"></x-photo></span>
+            <span class="px-[3vw]">páry</span><span class="inline-block h-[0.55em] w-[0.55em] overflow-hidden rounded-full"><x-photo src="parove/3" sizes="200px" class="h-full"></x-photo></span>
+            <span class="px-[3vw]">portréty</span><span class="inline-block h-[0.55em] w-[0.55em] overflow-hidden rounded-full"><x-photo src="portrety/5" sizes="200px" class="h-full"></x-photo></span>
           </div>
         </div>
       </section>
 
-      <section
-        class="snap-center min-h-screen lg:h-screen grid grid-cols-4 grid-rows-6 gap-3 mb-14"
-      >
-        <div
-          class="lg:col-start-1 lg:row-start-1 col-span-4 lg:col-span-2 row-span-3 lg:row-span-6 m-auto px-8"
-        >
-          <div>
-            <div
-              class="pt-6 text-4xl font-semibold tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-700"
-            >
-              Tehotenské
-            </div>
-            <p class="text-center max-w-md lg:max-w-sm mt-8">
-              Obdobie, kedy prichádza na svet nový život, je nádherné - ale aj
-              ťažké. Užite si fotenie s partnerom alebo sama, a zvečnite si tak
-              spomienky na toto obdobie za pomoci fotiek. Ne(odhalenie) bruška
-              je, samozrejme, plne na vás.
-            </p>
-            <p
-              class="text-center max-w-md lg:max-w-sm mt-6 text-sm text-gray-600"
-            >
-              Samotné fotenie odporúčam medzi 6. - 8. mesiacom, je to však
-              individuálne. Fotenie môžeme obohatiť rekvizitami - ultrazvukom
-              vášho bábätka, topánočkami či bodyčkom - a zrealizovať vonku či v
-              ateliéri.
-            </p>
+      <!-- BLACK & WHITE COLLAGE -->
+      <section class="collage relative mt-24 md:mt-40" data-dark>
+        <div class="relative h-[260vh] md:h-[320vh]">
+          <div class="pointer-events-none sticky top-0 z-20 flex h-svh flex-col items-center justify-center text-center text-white mix-blend-difference">
+            <p class="eyebrow mb-6" data-fade>(03) V čiernobielom</p>
+            <h2 class="display text-[19vw] md:text-[11vw]" data-split>Svetlo,<br /><em>ticho</em><br />a&nbsp;emócie</h2>
           </div>
-        </div>
-
-        <div
-          class="row-start-4 lg:row-start-1 col-span-4 lg:col-span-2 row-span-3 lg:row-span-6 grid grid-flow-col auto-cols-max lg:auto-cols-auto lg:grid-cols-2 lg:grid-rows-3 pt-2 pb-8 lg:py-3 lg:pr-3 gap-6 lg:gap-3 snap-x snap-always snap-mandatory overflow-x-scroll overflow-y-hidden"
-        >
-          <div
-            class="ml-24 lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-1 lg:row-span-2"
-          >
-            <img
-              src="images/pregnant/1.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-2 lg:row-start-1"
-          >
-            <img
-              src="images/pregnant/2.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-2 lg:row-start-2"
-          >
-            <img
-              src="images/pregnant/3.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-1 lg:row-start-3 lg:col-span-2"
-          >
-            <img
-              src="images/pregnant/4.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/pregnant/5.jpeg"
-              alt=""
-              class="object-cover object-bottom w-full h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-1 lg:row-start-3"
-          >
-            <img
-              src="images/pregnant/6.jpeg"
-              alt=""
-              class="object-cover object-bottom lg:object-center w-full h-full"
-            />
+          <div class="absolute inset-0 z-10">
+            <x-photo src="vyber/3" sizes="(min-width:768px) 20vw, 45vw" class="collage-img absolute left-[4%] top-[3%] w-[44vw] md:left-[7%] md:w-[17vw]" data-speed="0.25"></x-photo>
+            <x-photo src="svadby/4" sizes="(min-width:768px) 24vw, 50vw" class="collage-img absolute left-[52%] top-[7%] w-[44vw] md:left-[66%] md:w-[21vw]" data-speed="-0.15"></x-photo>
+            <x-photo src="vyber/5" sizes="(min-width:768px) 16vw, 40vw" class="collage-img absolute left-[36%] top-[19%] hidden w-[34vw] md:block md:w-[13vw]" data-speed="0.45"></x-photo>
+            <x-photo src="rodiny/2" sizes="(min-width:768px) 26vw, 50vw" class="collage-img absolute left-[6%] top-[27%] w-[48vw] md:left-[10%] md:w-[23vw]" data-speed="-0.1"></x-photo>
+            <x-photo src="portrety/2" sizes="(min-width:768px) 18vw, 42vw" class="collage-img absolute left-[56%] top-[36%] w-[38vw] md:left-[74%] md:w-[15vw]" data-speed="0.35"></x-photo>
+            <x-photo src="svadby/5" sizes="(min-width:768px) 22vw, 48vw" class="collage-img absolute left-[40%] top-[48%] hidden w-[40vw] md:block md:w-[19vw]" data-speed="0.05"></x-photo>
+            <x-photo src="tehotenske/3" sizes="(min-width:768px) 18vw, 44vw" class="collage-img absolute left-[4%] top-[55%] w-[42vw] md:left-[5%] md:top-[60%] md:w-[15vw]" data-speed="0.3"></x-photo>
+            <x-photo src="vyber/11" sizes="(min-width:768px) 24vw, 50vw" class="collage-img absolute left-[50%] top-[64%] w-[46vw] md:left-[62%] md:w-[21vw]" data-speed="-0.2"></x-photo>
+            <x-photo src="parove/2" sizes="(min-width:768px) 20vw, 44vw" class="collage-img absolute left-[10%] top-[80%] w-[40vw] md:left-[30%] md:top-[78%] md:w-[17vw]" data-speed="0.15"></x-photo>
+            <x-photo src="tehotenske/6" sizes="(min-width:768px) 16vw, 40vw" class="collage-img absolute left-[80%] top-[86%] hidden md:block md:w-[13vw]" data-speed="0.4"></x-photo>
           </div>
         </div>
       </section>
 
-      <section
-        class="snap-center min-h-screen lg:h-screen grid grid-cols-4 grid-rows-6 gap-3"
-      >
-        <div
-          class="lg:col-start-1 lg:row-start-1 col-span-4 lg:col-span-2 row-span-3 lg:row-span-6 m-auto px-8"
-        >
-          <div>
-            <div
-              class="pt-6 text-4xl font-semibold tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-700"
-            >
-              Párové
+      <!-- ABOUT TEASER -->
+      <section class="px-5 py-32 md:px-10 md:py-52">
+        <div class="grid items-end gap-12 md:grid-cols-12">
+          <div class="relative md:col-span-5">
+            <div class="overflow-hidden"><x-photo src="vyber/15" sizes="(min-width:768px) 40vw, 90vw" class="reveal-img parallax-img aspect-[4/5]" alt="Fotografka Marušáková (zástupná fotografia)"></x-photo></div>
+            <p class="eyebrow mt-3 text-ink-muted">[Sem príde vaša portrétna fotka]</p>
+          </div>
+          <div class="md:col-span-6 md:col-start-7">
+            <p class="eyebrow mb-8 text-ink-muted" data-fade>(04) O mne</p>
+            <h2 class="display text-[15vw] md:text-[7.5vw]" data-split>Ahoj, som <em>[Meno]</em></h2>
+            <div class="mt-10 grid gap-6 text-ink-soft md:grid-cols-2">
+              <p data-fade>Fotografujem od čias, keď som si prvý raz požičala otcov fotoaparát a nevedela sa od neho odtrhnúť. Dnes je to moja práca aj moja najväčšia radosť.</p>
+              <p data-fade>Milujem zlatú hodinku, jemný šum filmových farieb a ľudí, ktorí sa pred objektívom postupne uvoľnia. Na fotení sa preto hlavne rozprávame a smejeme.</p>
             </div>
-            <p class="text-center max-w-md lg:max-w-sm mt-8">
-              Láska. To je to, čo má byť cítiť z fotografií párov. Párové
-              fotenie je o vás. Ak máte radi hory, odfotím vás pokojne aj na
-              Chopku. Ak je súčasťou vášho života štvornohý miláčik, na fotení
-              nesmie chýbať. Alebo prechádzka po meste? Ako si to len budete
-              priať.
-            </p>
-            <p
-              class="text-center max-w-md lg:max-w-sm mt-6 text-sm text-gray-600"
-            >
-              Pri blížiacej sa svadbe môžete párové fotenie využiť aj ako
-              generálku, aby ste si vyskúšali, ako sa cítite pred objektívom.
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="row-start-4 lg:row-start-1 col-span-4 lg:col-span-2 row-span-3 lg:row-span-6 grid grid-flow-col auto-cols-max lg:auto-cols-auto lg:grid-cols-2 lg:grid-rows-3 pb-8 lg:py-3 lg:pr-3 gap-6 lg:gap-3 snap-x snap-always snap-mandatory overflow-x-scroll overflow-y-hidden"
-        >
-          <div
-            class="ml-24 lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-1 lg:row-span-2"
-          >
-            <img
-              src="images/pairs/1.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-2 lg:row-start-1"
-          >
-            <img
-              src="images/pairs/2.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-2 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/pairs/3.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-1 lg:row-start-3"
-          >
-            <img
-              src="images/pairs/4.jpeg"
-              alt=""
-              class="object-cover object-center lg:object-left w-full h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/pairs/5.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full h-full"
-            />
+            <a href="o-mne.html" class="btn-round mt-12 h-32 w-32" data-fade><span>Viac o mne</span></a>
           </div>
         </div>
       </section>
 
-      <section
-        class="snap-center min-h-screen lg:h-screen grid grid-cols-4 grid-rows-6 gap-3 mt-16 pt-4"
-      >
-        <div
-          class="lg:col-start-1 lg:row-start-1 col-span-4 lg:col-span-2 row-span-2 lg:row-span-6 m-auto px-8"
-        >
-          <div>
-            <div
-              class="pt-6 text-4xl font-semibold tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-700"
-            >
-              Portréty
-            </div>
-            <p class="text-center max-w-md lg:max-w-sm mt-8">
-              Ostať naždy mladá sa úplne nedá, no fotky v tom vedia pomôcť.
-              Urobte si pekný deň, dajte sa nalíčiť, učesať a doprajte si
-              spomienku v podobe fotenia. Alebo zoberte na fotenie svoju
-              najlepšiu kamošku a spravte si fotografie spolu.
-            </p>
-
-            <p
-              class="text-center max-w-md lg:max-w-sm mt-6 text-sm text-gray-600"
-            >
-              Počas fotenia striedame aspoň 2-3 outfity, pri výbere ktorých vám,
-              v prípade potreby, rada pomôžem.
-            </p>
-          </div>
+      <!-- TESTIMONIALS -->
+      <section class="border-t border-line px-5 py-32 md:px-10 md:py-44" data-testimonials>
+        <div class="mb-14 flex items-center justify-between">
+          <p class="eyebrow text-ink-muted" data-fade>(05) Povedali o mne</p>
+          <p class="eyebrow"><span data-t-index>01</span> / <span data-t-total>04</span></p>
         </div>
-
-        <div
-          class="row-start-3 lg:row-start-1 col-span-4 lg:col-span-2 row-span-4 lg:row-span-6 grid grid-flow-col auto-cols-max lg:auto-cols-auto lg:grid-cols-2 lg:grid-rows-3 pt-4 pb-28 lg:py-3 lg:pr-3 gap-6 lg:gap-3 snap-x snap-always snap-mandatory overflow-x-scroll overflow-y-hidden"
-        >
-          <div
-            class="ml-24 lg:ml-0 rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-1 lg:row-span-2"
-          >
-            <img
-              src="images/portraits/1.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-2 lg:row-start-1"
-          >
-            <img
-              src="images/portraits/2.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-2 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/portraits/3.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center lg:col-start-1 lg:row-start-3"
-          >
-            <img
-              src="images/portraits/4.jpeg"
-              alt=""
-              class="object-cover object-center lg:w-full lg:h-full"
-            />
-          </div>
-          <div
-            class="lg:hidden rounded-3xl overflow-hidden h-[23rem] w-72 lg:h-auto lg:w-auto snap-center translate-y-8 lg:translate-y-0 lg:col-start-1 lg:row-start-2 lg:row-span-2"
-          >
-            <img
-              src="images/portraits/5.jpeg"
-              alt=""
-              class="object-cover object-bottom w-full h-full"
-            />
-          </div>
+        <div class="grid">
+          <blockquote class="t-item [grid-area:1/1]">
+            <p class="font-serif text-[8.5vw] leading-[1.08] md:w-[80%] md:text-[4vw]">„Keď sme dostali fotky, plakali sme obaja. Nie preto, že sú krásne&nbsp;— ale preto, že sme si znovu zažili celý deň.“</p>
+            <footer class="eyebrow mt-10 text-ink-muted">Lucia &amp; Tomáš — svadba</footer>
+          </blockquote>
+          <blockquote class="t-item invisible [grid-area:1/1]">
+            <p class="font-serif text-[8.5vw] leading-[1.08] md:w-[80%] md:text-[4vw]">„S dvoma malými deťmi sme sa báli, že to bude chaos. Bol to chaos&nbsp;— a výsledkom sú najkrajšie fotky, aké máme.“</p>
+            <footer class="eyebrow mt-10 text-ink-muted">Rodina Kováčová — rodinné fotenie</footer>
+          </blockquote>
+          <blockquote class="t-item invisible [grid-area:1/1]">
+            <p class="font-serif text-[8.5vw] leading-[1.08] md:w-[80%] md:text-[4vw]">„Pred objektívom som sa cítila prvýkrát prirodzene. Ani som nevedela, kedy fotí.“</p>
+            <footer class="eyebrow mt-10 text-ink-muted">Zuzana — tehotenské fotenie</footer>
+          </blockquote>
+          <blockquote class="t-item invisible [grid-area:1/1]">
+            <p class="font-serif text-[8.5vw] leading-[1.08] md:w-[80%] md:text-[4vw]">„Fotky z párového fotenia visia u nás doma na stene a každý návštevník sa pýta, kto ich fotil.“</p>
+            <footer class="eyebrow mt-10 text-ink-muted">Petra &amp; Marek — párové fotenie</footer>
+          </blockquote>
+        </div>
+        <div class="mt-14 flex gap-3">
+          <button type="button" class="btn-round h-14 w-14" data-t-prev aria-label="Predchádzajúca recenzia"><span>←</span></button>
+          <button type="button" class="btn-round h-14 w-14" data-t-next aria-label="Ďalšia recenzia"><span>→</span></button>
         </div>
       </section>
     </main>
+
+    <!-- @include footer -->
   </body>
 </html>

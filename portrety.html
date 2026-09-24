@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <!-- @include head -->
+    <title>Portréty — Marušáková photos</title>
+    <meta name="description" content="Portrétne fotenie – deň len pre vás, alebo pre vás a vašu najlepšiu kamošku." />
+  </head>
+  <body data-page="portrety">
+    <!-- @include header -->
+
+    <main id="obsah">
+      <section class="px-5 pt-32 md:px-10 md:pt-40">
+        <div class="mb-4 flex justify-between text-ink-muted md:mb-2">
+          <p class="eyebrow" data-fade>Portfólio — N° 05 / 05</p>
+          <p class="eyebrow" data-fade>5 fotografií</p>
+        </div>
+        <h1 class="display text-[25vw] leading-[0.8] tracking-[-0.045em] md:text-[18.5vw]" data-split>Portréty</h1>
+        <div class="mt-8 grid md:mt-6 md:grid-cols-12">
+          <p class="max-w-xs text-ink-soft md:col-span-3 md:col-start-10" data-fade>Deň len pre vás — alebo pre vás a vašu najlepšiu kamošku.</p>
+        </div>
+      </section>
+
+      <div class="relative mt-14 h-[78svh] overflow-hidden md:mt-16 md:h-[115vh]">
+        <x-photo src="portrety/4" sizes="100vw" eager class="reveal-img parallax-img absolute inset-0 h-full" alt="Portréty – úvodná fotografia"></x-photo>
+      </div>
+
+      <section class="grid gap-10 px-5 py-28 md:grid-cols-12 md:px-10 md:py-44">
+        <p class="eyebrow pt-3 text-ink-muted md:col-span-2" data-fade>(O fotení)</p>
+        <p class="font-serif text-[7.4vw] leading-[1.12] md:col-span-7 md:text-[2.9vw]" data-split>Ostať navždy mladá sa úplne nedá, no fotky v tom vedia pomôcť. Urobte si pekný deň, dajte sa nalíčiť, učesať a doprajte si spomienku v podobe fotenia. Alebo zoberte na fotenie svoju najlepšiu kamošku a spravte si fotografie spolu.</p>
+        <div class="md:col-span-3 md:self-end">
+          <p class="text-ink-soft" data-fade>Počas fotenia striedame aspoň 2 – 3 outfity, pri výbere ktorých vám v prípade potreby rada pomôžem.</p>
+          <a href="kontakt.html" class="btn-round mt-10 h-28 w-28" data-fade><span>Rezervovať</span></a>
+        </div>
+      </section>
+
+      <section class="px-5 pb-28 md:px-10 md:pb-40">
+        <div class="mb-16 flex items-end justify-between border-t border-line pt-8 md:mb-24">
+          <h2 class="display text-[14vw] italic md:text-[7vw]" data-split>Galéria</h2>
+          <p class="eyebrow text-ink-muted" data-fade>Kliknite na fotku pre zväčšenie</p>
+        </div>
+        <!-- @gallery portrety "Portréty" -->
+      </section>
+
+      <section class="border-t border-line px-5 py-28 text-center md:px-10 md:py-40">
+        <p class="eyebrow mb-10 text-ink-muted" data-fade>Povedali o mne</p>
+        <p class="mx-auto max-w-5xl font-serif text-[8.5vw] leading-[1.08] md:text-[4.4vw]" data-split>„Konečne mám fotky, na ktorých sa sama sebe páčim.“</p>
+        <p class="eyebrow mt-10 text-ink-muted" data-fade>— Veronika</p>
+      </section>
+
+      <a href="svadby.html" class="group relative block h-[75svh] overflow-hidden md:h-svh" data-cursor="Ďalej">
+        <x-photo src="svadby/7" sizes="100vw" class="parallax-img absolute inset-0 h-full" alt=""></x-photo>
+        <span class="absolute inset-0 bg-black/40 transition-colors duration-700 group-hover:bg-black/20"></span>
+        <span class="absolute inset-0 flex flex-col items-center justify-center px-5 text-center text-paper">
+          <span class="eyebrow mb-6">Ďalšia kategória — N° 01</span>
+          <span class="display block text-[22vw] transition-all duration-700 group-hover:italic md:text-[14vw]">Svadby</span>
+        </span>
+      </a>
+    </main>
+
+    <!-- @include footer -->
+  </body>
+</html>

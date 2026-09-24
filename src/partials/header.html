@@ -1,0 +1,62 @@
+<a href="#obsah" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:bg-paper focus:px-4 focus:py-2">Preskočiť na obsah</a>
+
+<header class="site-header fixed inset-x-0 top-0 z-50 text-white mix-blend-difference">
+  <div class="flex items-center justify-between gap-6 px-5 py-5 md:px-10 md:py-7">
+    <a href="index.html" class="group flex items-baseline gap-1.5 font-serif text-[1.65rem] leading-none tracking-tight" aria-label="Marušáková photos – domov">
+      <span>Marušáková</span><span class="italic opacity-70 transition-opacity group-hover:opacity-100">photos</span>
+    </a>
+    <p class="eyebrow hidden lg:block opacity-70">Svadobná &amp; rodinná fotografka — Slovensko</p>
+    <div class="flex items-center gap-8">
+      <a href="kontakt.html" class="eyebrow link-line hidden md:inline">Rezervovať</a>
+      <button type="button" class="menu-toggle eyebrow flex items-center gap-3" aria-expanded="false" aria-controls="menu">
+        <span class="menu-toggle-label">Menu</span>
+        <span class="relative block h-2.5 w-7" aria-hidden="true">
+          <span class="menu-bar absolute left-0 top-0 h-px w-full bg-current"></span>
+          <span class="menu-bar absolute bottom-0 left-0 h-px w-full bg-current"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="menu" class="menu fixed inset-0 z-40 invisible bg-night text-paper" aria-hidden="true">
+  <div class="grid h-full grid-cols-1 gap-10 px-5 pb-8 pt-28 md:grid-cols-12 md:px-10 md:pb-10 md:pt-32">
+    <nav class="flex flex-col justify-center md:col-span-7" aria-label="Hlavná navigácia">
+      <p class="menu-fade eyebrow mb-6 text-ink-muted">Portfólio</p>
+      <ul class="space-y-1 md:space-y-0">
+        <li class="overflow-hidden"><a href="svadby.html" data-preview="0" class="menu-link group flex items-baseline gap-4 font-serif text-5xl leading-[1.05] md:text-[5.6vw]"><span class="eyebrow w-8 text-ink-muted">01</span><span class="transition-transform duration-500 ease-out-expo group-hover:translate-x-4 group-hover:italic">Svadby</span></a></li>
+        <li class="overflow-hidden"><a href="rodiny.html" data-preview="1" class="menu-link group flex items-baseline gap-4 font-serif text-5xl leading-[1.05] md:text-[5.6vw]"><span class="eyebrow w-8 text-ink-muted">02</span><span class="transition-transform duration-500 ease-out-expo group-hover:translate-x-4 group-hover:italic">Rodiny</span></a></li>
+        <li class="overflow-hidden"><a href="tehotenske.html" data-preview="2" class="menu-link group flex items-baseline gap-4 font-serif text-5xl leading-[1.05] md:text-[5.6vw]"><span class="eyebrow w-8 text-ink-muted">03</span><span class="transition-transform duration-500 ease-out-expo group-hover:translate-x-4 group-hover:italic">Tehotenské</span></a></li>
+        <li class="overflow-hidden"><a href="parove.html" data-preview="3" class="menu-link group flex items-baseline gap-4 font-serif text-5xl leading-[1.05] md:text-[5.6vw]"><span class="eyebrow w-8 text-ink-muted">04</span><span class="transition-transform duration-500 ease-out-expo group-hover:translate-x-4 group-hover:italic">Páry</span></a></li>
+        <li class="overflow-hidden"><a href="portrety.html" data-preview="4" class="menu-link group flex items-baseline gap-4 font-serif text-5xl leading-[1.05] md:text-[5.6vw]"><span class="eyebrow w-8 text-ink-muted">05</span><span class="transition-transform duration-500 ease-out-expo group-hover:translate-x-4 group-hover:italic">Portréty</span></a></li>
+      </ul>
+      <div class="menu-fade mt-10 flex gap-8 font-serif text-2xl md:text-3xl">
+        <a href="o-mne.html" class="link-line italic">O mne</a>
+        <a href="kontakt.html" class="link-line italic">Kontakt</a>
+      </div>
+    </nav>
+
+    <div class="menu-previews relative hidden md:col-span-4 md:col-start-9 md:block" aria-hidden="true">
+      <div class="absolute inset-y-[8%] inset-x-0 overflow-hidden">
+        <x-photo src="svadby/7" sizes="30vw" class="menu-preview absolute inset-0 h-full"></x-photo>
+        <x-photo src="rodiny/1" sizes="30vw" class="menu-preview absolute inset-0 h-full"></x-photo>
+        <x-photo src="tehotenske/2" sizes="30vw" class="menu-preview absolute inset-0 h-full"></x-photo>
+        <x-photo src="parove/2" sizes="30vw" class="menu-preview absolute inset-0 h-full"></x-photo>
+        <x-photo src="portrety/4" sizes="30vw" class="menu-preview absolute inset-0 h-full"></x-photo>
+      </div>
+    </div>
+
+    <div class="menu-fade flex flex-wrap items-end justify-between gap-4 self-end text-sm text-ink-muted md:col-span-12">
+      <a href="mailto:ahoj@marusakova.example" class="link-line">ahoj@marusakova.example</a>
+      <div class="flex gap-6">
+        <a href="https://www.instagram.com/" class="link-line" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/" class="link-line" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-transition pointer-events-none fixed inset-0 z-[80] bg-night" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor cursor-dot hidden" aria-hidden="true"></div>
+<div class="cursor-label hidden" aria-hidden="true"></div>

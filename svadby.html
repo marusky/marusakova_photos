@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <!-- @include head -->
+    <title>Svadby — Marušáková photos</title>
+    <meta name="description" content="Svadobná fotografka – celý svadobný deň od príprav po posledný tanec." />
+  </head>
+  <body data-page="svadby">
+    <!-- @include header -->
+
+    <main id="obsah">
+      <section class="px-5 pt-32 md:px-10 md:pt-40">
+        <div class="mb-4 flex justify-between text-ink-muted md:mb-2">
+          <p class="eyebrow" data-fade>Portfólio — N° 01 / 05</p>
+          <p class="eyebrow" data-fade>7 fotografií</p>
+        </div>
+        <h1 class="display text-[25vw] leading-[0.8] tracking-[-0.045em] md:text-[18.5vw]" data-split>Svadby</h1>
+        <div class="mt-8 grid md:mt-6 md:grid-cols-12">
+          <p class="max-w-xs text-ink-soft md:col-span-3 md:col-start-10" data-fade>Celý deň od príprav po posledný tanec — aj tam, kde práve nie ste.</p>
+        </div>
+      </section>
+
+      <div class="relative mt-14 h-[78svh] overflow-hidden md:mt-16 md:h-[115vh]">
+        <x-photo src="svadby/7" sizes="100vw" eager class="reveal-img parallax-img absolute inset-0 h-full" alt="Svadby – úvodná fotografia"></x-photo>
+      </div>
+
+      <section class="grid gap-10 px-5 py-28 md:grid-cols-12 md:px-10 md:py-44">
+        <p class="eyebrow pt-3 text-ink-muted md:col-span-2" data-fade>(O fotení)</p>
+        <p class="font-serif text-[7.4vw] leading-[1.12] md:col-span-7 md:text-[2.9vw]" data-split>Fotenie svadobného dňa je pre mňa veľká zodpovednosť aj zážitok. Zachytím okamihy, ku ktorým sa každý z nás rád vracia — lásku mladomanželov, rodinu, tanec, ale aj detaily, ako napríklad výzdobu. Budem tam, kde sa niečo deje, dokonca aj tam, kde nie ste vy, aby ste si pri pozeraní fotiek mohli váš veľký deň užiť znovu.</p>
+        <div class="md:col-span-3 md:self-end">
+          <p class="text-ink-soft" data-fade>Svadobné fotenie zahŕňa fotenie príprav nevesty a ženícha, fotenie obradu, svadobnú reportáž a fotenie svadobných portrétov, ktoré je možné nafotiť aj v iný ako váš svadobný deň.</p>
+          <a href="kontakt.html" class="btn-round mt-10 h-28 w-28" data-fade><span>Rezervovať</span></a>
+        </div>
+      </section>
+
+      <section class="px-5 pb-28 md:px-10 md:pb-40">
+        <div class="mb-16 flex items-end justify-between border-t border-line pt-8 md:mb-24">
+          <h2 class="display text-[14vw] italic md:text-[7vw]" data-split>Galéria</h2>
+          <p class="eyebrow text-ink-muted" data-fade>Kliknite na fotku pre zväčšenie</p>
+        </div>
+        <!-- @gallery svadby "Svadby" -->
+      </section>
+
+      <section class="border-t border-line px-5 py-28 text-center md:px-10 md:py-40">
+        <p class="eyebrow mb-10 text-ink-muted" data-fade>Povedali o mne</p>
+        <p class="mx-auto max-w-5xl font-serif text-[8.5vw] leading-[1.08] md:text-[4.4vw]" data-split>„Keď sme dostali fotky, plakali sme obaja. Znovu sme si zažili celý deň.“</p>
+        <p class="eyebrow mt-10 text-ink-muted" data-fade>— Lucia &amp; Tomáš</p>
+      </section>
+
+      <a href="rodiny.html" class="group relative block h-[75svh] overflow-hidden md:h-svh" data-cursor="Ďalej">
+        <x-photo src="rodiny/1" sizes="100vw" class="parallax-img absolute inset-0 h-full" alt=""></x-photo>
+        <span class="absolute inset-0 bg-black/40 transition-colors duration-700 group-hover:bg-black/20"></span>
+        <span class="absolute inset-0 flex flex-col items-center justify-center px-5 text-center text-paper">
+          <span class="eyebrow mb-6">Ďalšia kategória — N° 02</span>
+          <span class="display block text-[22vw] transition-all duration-700 group-hover:italic md:text-[14vw]">Rodiny</span>
+        </span>
+      </a>
+    </main>
+
+    <!-- @include footer -->
+  </body>
+</html>
